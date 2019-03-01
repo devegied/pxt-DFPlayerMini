@@ -32,6 +32,19 @@ namespace dfplayer {
         type5 = 0x0E
     }
 
+    export enum deviceType {
+        //% block="U_DISK"
+        type1 = 0x01,
+        //% block="SD"
+        type2 = 0x02,
+        //% block="AUX"
+        type3 = 0x03,
+        //% block="SLEEP"
+        type4 = 0x04,
+        //% block="FLASH"
+        type5 = 0x05
+    }
+    
     export enum yesOrNot {
         //% block="no"
         type1 = 0,
@@ -74,6 +87,19 @@ namespace dfplayer {
         sendData()
     }
 
+    //% blockId="setPlayDevice" block="set play device:%myDevice"
+    //% weight=95 blockExternalInputs=true blockGap=20
+    export function setPlayDevice(myDevice: deviceType):void{
+        CMD=0x09
+        para1=0x00
+        para2=myDevice
+        dataArr[3]=CMD
+        dataArr[5] = para1
+        dataArr[6] = para2
+        checkSum()
+        sendData()
+    }
+    
     //% blockId="setTracking" block="play the mp3 on the track:%tracking|repeat:%myAns"
     //% weight=85 blockGap=20 tracking.min=1 tracking.max=255
     export function setTracking(tracking:number,myAns:yesOrNot):void{
