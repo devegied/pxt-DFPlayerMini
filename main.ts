@@ -100,6 +100,22 @@ namespace dfplayer {
         sendData()
     }
     
+    //% blockId="playMp3Folder" block="play the mp3 on the MP3 Folder:%fileNumber|repeat:%myAns"
+    //% weight=87 blockGap=20 fileNumber.min=1 fileNumber.max=9999
+    export function playMp3Folder(fileNumber:number,myAns:yesOrNot):void{
+        CMD=0x12
+        para1=0x00
+        para2=fileNumber
+        dataArr[3]=CMD
+        dataArr[5] = para1
+        dataArr[6] = para2
+        checkSum()
+        sendData()
+        execute(0x0D)
+        if (myAns==1)
+           execute(0x19)
+    }
+    
     //% blockId="setTracking" block="play the mp3 on the track:%tracking|repeat:%myAns"
     //% weight=85 blockGap=20 tracking.min=1 tracking.max=255
     export function setTracking(tracking:number,myAns:yesOrNot):void{
