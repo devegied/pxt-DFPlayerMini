@@ -1,7 +1,7 @@
 {
     "name": "dfplayer",
-    "version": "0.0.1",
-    "description": "這是DFPlayer mini的Makecode專用積木",
+    "version": "0.0.2",
+    "description": "package to play MP3 by using micro:bit attached DFPlayer mini",
     "license": "MIT",
     "dependencies": {
         "core": "*"
